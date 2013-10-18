@@ -13,13 +13,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <liferay.version>6.1.2</liferay.version>
     <liferay.maven.plugin.version>6.1.30</liferay.maven.plugin.version>
+    <liferay.spring.version>3.0.7.RELEASE</liferay.spring.version>
   </properties>
     
   <parent>
-  <groupId>tld.dmt</groupId>
-  <artifactId>mproject-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+      <groupId>tld.dmt</groupId>
+      <artifactId>mproject-parent</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <relativePath>../pom.xml</relativePath>
   </parent>
     
   <build>
@@ -56,7 +57,17 @@
     </plugins>
   </build>
   <dependencies>
-    <dependency>
+
+      <!--Spring-->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc-portlet</artifactId>
+          <version>${liferay.spring.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+
+      <dependency>
       <groupId>com.liferay.portal</groupId>
       <artifactId>portal-service</artifactId>
       <version>${liferay.version}</version>
