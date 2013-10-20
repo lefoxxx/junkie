@@ -1,8 +1,24 @@
-<%@ taglib prefix="liferay-portlet" uri="http://liferay.com/tld/portlet" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="liferay-ui" uri="http://liferay.com/tld/ui" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-<%@ taglib uri="http://liferay.com/tld/theme" prefix="theme" %>
+<%-- This JSP page will be included in other JSPs for minimizing import statements--%>
 
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://liferay.com/tld/theme" prefix="theme" %>
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %>
+<%@ taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %>
+<%@ taglib uri="http://liferay.com/tld/security" prefix="liferay-security" %>
+<%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
+<%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
+<%@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
+
+<%--Importing JSR-286 specific implicit variables.
+Read more: https://blogs.oracle.com/deepakg/entry/jsr286_defineobjects_tag  --%>
 <portlet:defineObjects />
+
+<%--Importing LifeRay specific implicit variables (like colorScheme, user etc).
+ Read more: http://www.liferay.com/community/forums/-/message_boards/message/5997940  --%>
+<liferay-theme:defineObjects />
+
+
+
