@@ -1,0 +1,19 @@
+.form_section {
+    width: 100%;
+    border: 2px solid black;
+    margin-bottom: 9px;
+    padding: 4px;
+}
+
+.section_title {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.form_table {
+    border-collapse: separate;
+}
+
+.form_table td, .form_table th {
+    padding: 3px; /* cellpadding */
+}

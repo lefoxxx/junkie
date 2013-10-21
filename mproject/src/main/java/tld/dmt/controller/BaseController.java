@@ -1,15 +1,18 @@
-package tld.dmt;
+package tld.dmt.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
-import com.liferay.portal.kernel.util.ParamUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
+import tld.dmt.model.SourcingDocument;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -40,23 +43,29 @@ public class BaseController {
 		return "source/sourcing/main";
 	}
 
+    @ModelAttribute("sourcingDocument")
+    public SourcingDocument createModel() {
+        return new SourcingDocument();
+    }
 
     @ActionMapping(params = "action=createDoc")
-    public void createDoc(ActionRequest request, ActionResponse response) {
+    public void createDoc(@ModelAttribute SourcingDocument sourcingDocument,
+                          BindingResult bindingResult,
+                          ActionRequest request,
+                          ActionResponse response,
+                          SessionStatus sessionStatus) {
+
         // parsing request params and call service for saving doc
         log.info("Beginning creating document.");
-        String docAuthor = ParamUtil.get(request, "docAuthor", "");
-
-        String docTitle = ParamUtil.get(request, "docTitle", "");
 
         boolean isErrorOccurred = false;
 
-        if (docAuthor == null || docAuthor.isEmpty()) {
+        if (sourcingDocument.getAuthor() == null || sourcingDocument.getAuthor().isEmpty()) {
             isErrorOccurred = true;
             SessionErrors.add(request, "author-is-required");
         }
 
-        if (docTitle == null || docTitle.isEmpty()) {
+        if (sourcingDocument.getTitle() == null || sourcingDocument.getTitle().isEmpty()) {
             isErrorOccurred = true;
             SessionErrors.add(request, "title-is-required");
         }
