@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping schema="BGM_CONTRACTS_OBJECT">
+    <class name="tld.dmt.model.FileUploaded"
+           proxy="tld.dmt.model.FileUploaded"
+           mutable="false"
+           table="FILE_UPLOADED">
+
+        <id name="id" column="ID" type="string">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="filename" column="FILENAME"/>
+        <property name="filesize" column="FILESIZE"/>
+        <property name="updated" column="UPDATED"/>
+    </class>
+</hibernate-mapping>
