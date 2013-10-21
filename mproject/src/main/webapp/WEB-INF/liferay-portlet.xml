@@ -8,6 +8,7 @@
 		<header-portlet-css>/css/main.css</header-portlet-css>
         <header-portlet-javascript>/js/external/jquery-1.10.2.min.js</header-portlet-javascript>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+        <css-class-wrapper>dmt</css-class-wrapper>
 	</portlet>
 	<role-mapper>
 		<role-name>administrator</role-name>
