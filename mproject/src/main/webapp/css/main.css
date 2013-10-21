@@ -1,19 +1,6 @@
-.form_section {
-    width: 100%;
-    border: 2px solid black;
-    margin-bottom: 9px;
-    padding: 4px;
-}
-
-.section_title {
-    font-style: italic;
-    font-weight: bold;
-}
-
-.form_table {
-    border-collapse: separate;
-}
-
-.form_table td, .form_table th {
-    padding: 3px; /* cellpadding */
-}
+/*
+    Supposed that for each tab in portlet will be created css file.
+    This is the master CSS. The purpose is to aggregate all CSS files in project.
+    By project convention style names in CSS files corresponding to tabs, must be prefixed with <short_tab_name>
+*/
+@import url(setup.css);
