@@ -2,8 +2,6 @@ package tld.dmt.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.kernel.servlet.SessionErrors;
-import com.liferay.portal.kernel.servlet.SessionMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,15 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 import tld.dmt.model.FileUploaded;
-import tld.dmt.model.SourcingDoc;
-import tld.dmt.service.DmtService;
+import tld.dmt.model.SourcingDocument;
 import tld.dmt.service.FilesUploadedService;
+import tld.dmt.service.SourcingSetupService;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -31,33 +28,45 @@ import java.util.List;
  * @author imustafin
  */
 
-@Controller("sourceSetupController")
-@RequestMapping(value = "VIEW", params="tab=setup")
+@Controller("baseController")
+@RequestMapping(value = "VIEW")
 
 public class BaseController {
 
+    private static final Log log = LogFactoryUtil.getLog(BaseController.class);
+
     @Autowired
-    @Qualifier("dmtService")
-    private DmtService sourcingSetupService;
+    @Qualifier("sourcingSetupService")
+    private SourcingSetupService sourcingSetupService;
 
     @Autowired
     @Qualifier("filesUploadedService")
     FilesUploadedService filesUploadedService;
 
-    private static final Log log = LogFactoryUtil.getLog(BaseController.class);
 
-
-    @ActionMapping(params = "action=updateDoc")
-    public void updateDoc(@RequestParam String docId) {
-
+    /**
+     * This is default render method for portlet.
+     * The view, returned by this method, will be used as default portlet view.
+     * @param request the http request
+     * @param response the http response
+     * @param model the model
+     * @return name of default .jsp page to show
+     */
+    @RenderMapping
+    public String showMainView(RenderRequest request, RenderResponse response, Model model) {
+        return "source/sourcing/main";
     }
+
 
     @ModelAttribute("sourcingDoc")
-    public SourcingDoc createModel() {
-        return new SourcingDoc();
+    public SourcingDocument createModel() {
+        return new SourcingDocument();
     }
 
 
+    /**
+     * Call to this method must be finished with redirecting to error page
+     */
     @ActionMapping(params = "action=error")
     public void generateError() {
         if (true == true)
@@ -65,13 +74,14 @@ public class BaseController {
     }
 
     @ActionMapping(params = "action=createDoc")
-    public void createDoc(@ModelAttribute("sourcingDoc") SourcingDoc sourcingDoc,
+    public void createDoc(@ModelAttribute("sourcingDoc") SourcingDocument sourcingDoc,
                           BindingResult bindingResult,
                           ActionRequest request,
                           ActionResponse response,
                           SessionStatus sessionStatus) {
 
         boolean isErrorOccurred = false;
+/*
 
         if (sourcingDoc.getAuthor() == null || sourcingDoc.getAuthor().isEmpty()) {
             isErrorOccurred = true;
@@ -84,11 +94,11 @@ public class BaseController {
         }
 
         if (isErrorOccurred == false) {
-            sourcingSetupService.createSourcingDoc(sourcingDoc);
             SessionMessages.add(request, "doc-created-successfully");
             response.setRenderParameter("action", "successDocCreation");
             response.setRenderParameter("tab", "setup");// going to "showSuccessDocCreationPage()" method
         }
+*/
     }
 
     @RenderMapping (params="action=successDocCreation")

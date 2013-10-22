@@ -24,4 +24,13 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="1" />
 	</bean>
+
+    <bean id="exceptionResolver"
+          class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">source/sourcing/error</prop>
+            </props>
+        </property>
+    </bean>
 </beans>	

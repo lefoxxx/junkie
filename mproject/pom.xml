@@ -14,7 +14,7 @@
         <liferay.version>6.1.2</liferay.version>
         <liferay.maven.plugin.version>6.1.30</liferay.maven.plugin.version>
         <liferay.spring.version>3.0.7.RELEASE</liferay.spring.version>
-        <liferay.hibernate.version>3.6.10.FINAL</liferay.hibernate.version>
+        <liferay.hibernate.version>3.6.10.Final</liferay.hibernate.version>
     </properties>
 
     <parent>

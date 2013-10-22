@@ -17,11 +17,11 @@
 <liferay-ui:error key="title-is-required" message="Title is Required"></liferay-ui:error>
 <liferay-ui:error key="author-is-required" message="Author is Required"></liferay-ui:error>
 
-<form:form action="${createDocumentUrl}" method="post" commandName="sourcingDoc">
+<%--<form:form action="${createDocumentUrl}" method="post" commandName="sourcingDoc">
     Doc title: <form:input path="title"/>
     Doc author: <form:input path="author"/>
     <input type="submit">
-</form:form>
+</form:form>--%>
 
 
 <p></p><form action="${errorUrl}" method="post">
