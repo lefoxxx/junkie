@@ -1,11 +1,11 @@
 package tld.dmt.service;
 
-import tld.dmt.model.SourcingDoc;
+import tld.dmt.model.SourcingDocument;
 
 /**
  * @author imustafin
  */
-public interface DmtService {
+public interface SourcingSetupService {
 
     /**
      * Creates sourcing document
@@ -13,7 +13,7 @@ public interface DmtService {
      * @return created document
      * @throws DmtException if something went wrong
      */
-    SourcingDoc createSourcingDoc(SourcingDoc doc) throws DmtException;
+    SourcingDocument createSourcingDoc(SourcingDocument doc) throws DmtException;
 
 
     /**
@@ -21,5 +21,5 @@ public interface DmtService {
      * @param doc the doc to be edited
      * @throws DmtException if something went wrong
      */
-    void editSourcingDoc(SourcingDoc doc) throws DmtException;
+    void editSourcingDoc(SourcingDocument doc) throws DmtException;
 }

@@ -4,6 +4,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +13,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
+import tld.dmt.model.FileUploaded;
 import tld.dmt.model.SourcingDoc;
 import tld.dmt.service.DmtService;
+import tld.dmt.service.FilesUploadedService;
 
-import javax.inject.Inject;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import java.util.List;
 
 /**
  * @author imustafin
@@ -30,23 +34,23 @@ import javax.portlet.RenderResponse;
 @Controller("sourceSetupController")
 @RequestMapping(value = "VIEW", params="tab=setup")
 
-public class SourceSetupController {
+public class BaseController {
 
-    @Inject
+    @Autowired
     @Qualifier("dmtService")
     private DmtService sourcingSetupService;
 
-	private static final Log log = LogFactoryUtil.getLog(SourceSetupController.class);
+    @Autowired
+    @Qualifier("filesUploadedService")
+    FilesUploadedService filesUploadedService;
+
+    private static final Log log = LogFactoryUtil.getLog(BaseController.class);
 
 
     @ActionMapping(params = "action=updateDoc")
     public void updateDoc(@RequestParam String docId) {
 
     }
-
-
-
-
 
     @ModelAttribute("sourcingDoc")
     public SourcingDoc createModel() {
@@ -91,5 +95,20 @@ public class SourceSetupController {
     public String showSuccessDocCreationPage(RenderRequest request, RenderResponse response, Model model){
         return "source/sourcing/setup/success";
     }
+
+    @ActionMapping(params = "action=showFiles")
+    public void getDocs(ActionRequest request, ActionResponse response) {
+        response.setRenderParameter("action", "readFilesFromDb");
+    }
+
+
+    @RenderMapping (params="action=readFilesFromDb")
+    public ModelAndView showDocuments(RenderRequest request, RenderResponse response, Model model){
+        final List<FileUploaded> list = filesUploadedService.getFilesUploaded();
+        final ModelAndView mav = new ModelAndView( "source/sourcing/upload/list" );
+        mav.addObject("list", list);
+        return mav;
+    }
+
 
 }

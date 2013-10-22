@@ -1,4 +1,4 @@
-Please, do not put any machine-specific or installation specific properties into pom.xml. For this,
+1) Please, do not put any machine-specific or installation specific properties into pom.xml. For this,
 there is a parent pom.xml which is not under source control. It should be located one level above
 and contain the following (tweak properties as needed for your environment):
 
@@ -25,3 +25,38 @@ and contain the following (tweak properties as needed for your environment):
     <module>mproject</module>
   </modules>
 </project>
+
+2) Right now the application contains data source definition is Spring context files. It is a bit of 
+a challenge to make whole thing work with a container-managed datasource, possibly this is due to security 
+manager preventing JNDI-lookups from the global context. This needs further research. For now, file
+root-context.xml contains the following:
+
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/dmt?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf-8&amp;useUnicode=true"/>
+		<property name="username" value="dmt"/>
+		<property name="password" value="123456"/>
+ 
+Either try to create an identical setup on your machine or change this file as needed but be careful not to 
+commit it.
+
+3) This is the DDL you need to execute in MySQL:
+
+create database dmt;
+
+create user 'dmt'@'%' identified by '123456';
+
+grant all on dmt.* to 'dmt'@'%';
+
+use dmt;
+create table FILE_UPLOADED(
+   id INT NOT NULL AUTO_INCREMENT,
+   filename VARCHAR( 255 ) NOT NULL,
+   filesize INT NOT NULL DEFAULT 0,
+   updated_on DATETIME NOT NULL,
+
+   PRIMARY KEY( id )
+) ENGINE = InnoDB;
+
+insert into FILE_UPLOADED( filename, filesize, updated_on )
+values( 'messages.log', 123456, CURRENT_TIMESTAMP );
+  
