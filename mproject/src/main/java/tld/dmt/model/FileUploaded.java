@@ -1,21 +1,22 @@
 package tld.dmt.model;
 
-import org.hibernate.annotations.Entity;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-import javax.persistence.Table;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * User: ejolos
  * Date: 10/21/13
  */
-
 @Entity
 @Table(name="FILE_UPLOADED")
+@SuppressWarnings("serial")
 public class FileUploaded implements Serializable {
 
     private Integer id;
@@ -24,7 +25,8 @@ public class FileUploaded implements Serializable {
     private Date updated;
 
     @Id
-    @Column (name="id")
+    @Column( name = "id", updatable = false, nullable = false )
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     public Integer getId() {
         return id;
     }

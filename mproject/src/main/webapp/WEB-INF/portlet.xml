@@ -38,7 +38,7 @@
 		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
         <init-param>
             <name>contextConfigLocation</name>
-            <value>/WEB-INF/app-context.xml</value>
+            <value>/WEB-INF/root-context.xml, /WEB-INF/app-context.xml</value>
         </init-param>
 		<init-param> <!-- Is really need since @RenderMapping return default page? -->
 			<name>view-template</name>
