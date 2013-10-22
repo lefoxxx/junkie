@@ -1,18 +1,27 @@
 package tld.dmt.controller;
 
+import java.util.List;
+
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
+
+import tld.dmt.model.FileUploaded;
 import tld.dmt.model.SourcingDocument;
+import tld.dmt.service.FilesUploadedService;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -29,6 +38,11 @@ public class BaseController {
 
 	private static final Log log = LogFactoryUtil.getLog(BaseController.class);
 
+	@Autowired
+	@Qualifier("filesUploadedService")
+	FilesUploadedService filesUploadedService;
+
+	
     /**
      * This is default render method for portlet.
      * The view, returned by this method, will be used as default portlet view.
@@ -82,6 +96,21 @@ public class BaseController {
     @RenderMapping (params="action=successDocCreation")
     public String showSuccessDocCreationPage(RenderRequest request, RenderResponse response, Model model){
         return "source/sourcing/setup/success";
+    }
+    
+    
+    @ActionMapping(params = "action=showFiles")
+    public void getDocs(ActionRequest request, ActionResponse response) {
+        response.setRenderParameter("action", "readFilesFromDb");
+    }
+    
+    
+    @RenderMapping (params="action=readFilesFromDb")
+    public ModelAndView showDocuments(RenderRequest request, RenderResponse response, Model model){
+        final List<FileUploaded> list = filesUploadedService.getFilesUploaded();
+    	final ModelAndView mav = new ModelAndView( "source/sourcing/upload/list" );
+    	mav.addObject("list", list);
+        return mav;
     }
 
 }
