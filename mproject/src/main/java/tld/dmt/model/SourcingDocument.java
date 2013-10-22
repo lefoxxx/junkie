@@ -1,5 +1,7 @@
 package tld.dmt.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -13,7 +15,7 @@ public class SourcingDocument {
     }
 
     public enum DefaultLanguage {
-        English, Spanish, Russian
+        ENGLISH, SPANISH, RUSSIAN
     }
 
     public enum DefaultCurrency {
@@ -43,7 +45,9 @@ public class SourcingDocument {
     private DefaultCurrency defaultCurrency;
     private Status status;
     private SourceFrequency sourceFrequency;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startDate;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date endDate;
     private Double defaultUom;
 
@@ -67,7 +71,7 @@ public class SourcingDocument {
 
     // Exceptions section
     private String exceptionsEmail;
-    private String additionalEmainContent;
+    private String additionalEmailContent;
 
 
     public String getDealName() {
@@ -286,12 +290,12 @@ public class SourcingDocument {
         this.exceptionsEmail = exceptionsEmail;
     }
 
-    public String getAdditionalEmainContent() {
-        return additionalEmainContent;
+    public String getAdditionalEmailContent() {
+        return additionalEmailContent;
     }
 
-    public void setAdditionalEmainContent(String additionalEmainContent) {
-        this.additionalEmainContent = additionalEmainContent;
+    public void setAdditionalEmailContent(String additionalEmailContent) {
+        this.additionalEmailContent = additionalEmailContent;
     }
 
 

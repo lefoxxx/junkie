@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author imustafin
  */
 
+/**
+ * Specify tab name in params, so we can create multiple controller classes (for each tab one controller class).
+ * The parameter name should be "action"
+ */
 @Controller("tagDocumentController")
-@RequestMapping(value = "VIEW", params="tab=tagdoc") // specify tab name in params, so we can create multiple controller classes (for each tab one controller class)
-
+@RequestMapping(value = "VIEW", params="action=tagdoc")
 public class TagDocumentController {
 	private static final Log log = LogFactoryUtil.getLog(TagDocumentController.class);
 }

@@ -1,20 +1,36 @@
-/* Stylesheet for Sourcing Setup file */
-.form_section {
+/*
+    Stylesheet for Sourcing Setup tab. StyleName prefix - "setup_"
+*/
+
+#setup_form_wrapper {
+    font-size: 13px; /* TODO find a way to reset inherited CSS styles from LifeRay */
+}
+.setup_form_section {
     width: 100%;
     border: 2px solid black;
-    margin-bottom: 9px;
-    padding: 4px;
+    margin-bottom: 10px;
+    padding: 7px;
 }
 
-.section_title {
+.setup_section_title {
     font-style: italic;
     font-weight: bold;
+    text-decoration: underline;
 }
 
-.form_table {
+.setup_form_table {
+    width: 100%;
     border-collapse: separate;
 }
 
-.form_table td, .form_table th {
+.setup_form_table td, .setup_form_table th {
     padding: 3px; /* cellpadding */
+}
+
+.setup_max_width {
+    width: 100%;
+}
+
+#setup-btn-panel {
+    float: right;
 }
