@@ -3,6 +3,12 @@
 <fmt:setBundle basename="tld.dmt.source.resource.Language"/>
 
 <div id="setup_form_wrapper">
+
+    <portlet:actionURL var="createOrEditDocUrl">
+        <portlet:param name="action" value="setup"></portlet:param>
+        <portlet:param name="operation" value="createOrEditDoc"></portlet:param>
+    </portlet:actionURL>
+
     <form:form action="${createOrEditDocUrl}" method="post" commandName="sourcingDoc">
         <div class="setup_form_section">
             <table class="setup_form_table">
@@ -195,7 +201,7 @@
                         </form:label>
                     </td>
                     <td >
-                        <form:input path="primaryUrl" cssClass="setup_max_width"/>
+                        <form:input path="primaryUrl"/>
                     </td>
                     <td>
                         <form:label path="maxDepth">
@@ -291,7 +297,7 @@
             <fmt:message key="section-title-exceptions"/>
         </span>
         <div class="setup_form_section">
-            <table >
+            <table class="setup_form_table">
                 <tr>
                     <td>
                         <form:label path="exceptionsEmail">
@@ -299,8 +305,10 @@
                         </form:label>
                     </td>
                     <td colspan="3">
-                        <form:input path="exceptionsEmail"/>
+                        <form:input path="exceptionsEmail" cssClass="setup_max_width"/>
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -309,22 +317,18 @@
                         </form:label>
                     </td>
                     <td colspan="3">
-                        <form:input path="additionalEmailContent"/>
+                        <form:input path="additionalEmailContent" cssClass="setup_max_width"/>
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>
 
-        <portlet:actionURL var="createOrEditDocUrl">
-            <portlet:param name="action" value="setup"></portlet:param>
-            <portlet:param name="operation" value="createOrEditDoc"></portlet:param>
-        </portlet:actionURL>
-
-        <portlet:renderURL var="baseViewUrl"/>
 
         <div id="setup-btn-panel">
             <input type="submit" value="<fmt:message key="save"/>"/>
-            <a href="${baseViewUrl}"><fmt:message key="cancel"/></a>
+            <a href="<portlet:renderURL/>"><fmt:message key="cancel"/></a>
         </div>
 
     </form:form>
