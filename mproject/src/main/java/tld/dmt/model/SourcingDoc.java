@@ -1,12 +1,15 @@
 package tld.dmt.model;
 
+/**
+ * @author imustafin
+ */
 
-public class SourcingDocument {
+public class SourcingDoc {
 
     private String author;
     private String title;
 
-    public SourcingDocument() {
+    public SourcingDoc() {
     }
 
     public String getAuthor() {

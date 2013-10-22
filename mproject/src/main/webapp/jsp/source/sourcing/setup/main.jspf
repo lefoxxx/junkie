@@ -3,15 +3,27 @@
 <%@ include file="../config.jspf"%>
 
 <portlet:actionURL var="createDocumentUrl">
+    <portlet:param name="tab" value="setup"></portlet:param>
     <portlet:param name="action" value="createDoc"></portlet:param>
 </portlet:actionURL>
+
+<portlet:actionURL var="errorUrl">
+    <portlet:param name="tab" value="setup"></portlet:param>
+    <portlet:param name="action" value="error"></portlet:param>
+</portlet:actionURL>
+
 
 
 <liferay-ui:error key="title-is-required" message="Title is Required"></liferay-ui:error>
 <liferay-ui:error key="author-is-required" message="Author is Required"></liferay-ui:error>
 
-<form:form commandName="sourcingDocument" action="${createDocumentUrl}" method="post">
+<form:form action="${createDocumentUrl}" method="post" commandName="sourcingDoc">
     Doc title: <form:input path="title"/>
     Doc author: <form:input path="author"/>
     <input type="submit">
 </form:form>
+
+
+<p></p><form action="${errorUrl}" method="post">
+    <input type="submit" value=" Generate error">
+</form></p>
