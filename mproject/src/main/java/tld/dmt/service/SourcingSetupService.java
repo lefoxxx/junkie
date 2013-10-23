@@ -10,5 +10,9 @@ import tld.dmt.model.SourcingDocument;
 public interface SourcingSetupService {
 	public List<SourcingDocument> getAllDocuments();
 	public void save(SourcingDocument doc);
+	public SourcingDocument get(Long id);
+	
+	public void delete(SourcingDocument doc);
+
 
 }

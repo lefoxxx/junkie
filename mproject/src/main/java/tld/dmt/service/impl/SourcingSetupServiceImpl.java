@@ -34,5 +34,15 @@ public class SourcingSetupServiceImpl implements SourcingSetupService {
 		dao.save(doc);
 	}
 
+	@Override
+	public SourcingDocument get(Long id) {
+		return dao.get(id);
+	}
 
+	@Override
+	public void delete(SourcingDocument doc) {
+		dao.delete(doc);
+	}
+	
+	
 }

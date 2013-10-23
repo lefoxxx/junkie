@@ -25,4 +25,17 @@ public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
 	public void save(SourcingDocument doc) {
 		sessionFactory.getCurrentSession().saveOrUpdate(doc);
 	}
+
+	@Override
+	public SourcingDocument get(Long id) {
+		return (SourcingDocument)sessionFactory.getCurrentSession().load(SourcingDocument.class, id);
+	}
+
+	@Override
+	public void delete(SourcingDocument doc) {
+		sessionFactory.getCurrentSession().delete(doc);
+		
+	}
+	
+	
 }

@@ -1,7 +1,7 @@
 package tld.dmt.tests;
 
 //import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -38,13 +38,20 @@ public class SourcincDocumentDaoTest extends TestBase{
     
     @Test
     public  void testCRUD() {
-    	SourcingDocument doc = new SourcingDocument();
-    	doc.setDealName("SOME_DEAL_NAME");
+    	SourcingDocument newDoc = new SourcingDocument();
+    	newDoc.setDealName("SOME_DEAL_NAME");
     	List<SourcingDocument> docs = documentService.getAllDocuments();
     	int n = docs.size();
-    	documentService.save(doc);
-    	docs = documentService.getAllDocuments();
-    	assertEquals(n + 1, docs.size());
+
+    	documentService.save(newDoc);
+    	assertEquals("Save failed", n + 1,  documentService.getAllDocuments().size());
+    	
+    	SourcingDocument doc = documentService.get(newDoc.getId());
+    	assertNotNull("Can not load saved document", doc);
+    	
+    	documentService.delete(doc);
+    	assertEquals("Deletion failed", n, documentService.getAllDocuments().size());
+    	
     }
 
 }
