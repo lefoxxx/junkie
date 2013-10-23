@@ -152,7 +152,6 @@ public class SourcingDocument {
 	public Boolean getNlpProcess() {
 		return nlpProcess;
 	}
-
 	public void setNlpProcess(Boolean nlpProcess) {
 		this.nlpProcess = nlpProcess;
 	}
@@ -348,5 +347,28 @@ public class SourcingDocument {
 	public void setAdditionalEmailContent(String additionalEmailContent) {
 		this.additionalEmailContent = additionalEmailContent;
 	}
+	
 
+	@Override
+	public String toString() {
+		return "SourcingDocument [id=" + id + ", dealName=" + dealName
+				+ ", docType=" + docType + ", sourceType=" + sourceType
+				+ ", nlpProcess=" + nlpProcess + ", contactInfo=" + contactInfo
+				+ ", defaultLanguage=" + defaultLanguage + ", defaultCurrency="
+				+ defaultCurrency + ", status=" + status + ", sourceFrequency="
+				+ sourceFrequency + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", defaultUom=" + defaultUom + ", exactLocation="
+				+ exactLocation + ", fileName=" + fileName
+				+ ", exactLocationUserName=" + exactLocationUserName
+				+ ", exactLocationPassword=" + exactLocationPassword
+				+ ", primaryUrl=" + primaryUrl + ", maxDepth=" + maxDepth
+				+ ", docYear=" + docYear + ", docFormat=" + docFormat
+				+ ", docNameBeginsWith=" + docNameBeginsWith
+				+ ", docNameEndsWith=" + docNameEndsWith + ", docNameContains="
+				+ docNameContains + ", recrowlAttemptsNum="
+				+ recrowlAttemptsNum + ", primaryUrlUserName="
+				+ primaryUrlUserName + ", primaryUrlPassword="
+				+ primaryUrlPassword + ", exceptionsEmail=" + exceptionsEmail
+				+ ", additionalEmailContent=" + additionalEmailContent + "]";
+	}
 }

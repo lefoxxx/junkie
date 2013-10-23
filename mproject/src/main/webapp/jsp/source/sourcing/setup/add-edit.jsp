@@ -11,6 +11,7 @@
 
     <form:form action="${createOrEditDocUrl}" method="post" commandName="sourcingDoc">
         <div class="setup_form_section">
+            <form:hidden path="id"/>
             <table class="setup_form_table">
                 <tr>
                     <td>

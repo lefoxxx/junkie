@@ -1,11 +1,11 @@
 package tld.dmt.dao.hibernate;
 
-import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 import java.util.List;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,12 @@ public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
 
 	@Override
 	public SourcingDocument get(Long id) {
-		return (SourcingDocument)sessionFactory.getCurrentSession().load(SourcingDocument.class, id);
+		Session session = sessionFactory.getCurrentSession();
+		if( session == null )
+			session = sessionFactory.openSession();
+		final SourcingDocument doc = (SourcingDocument)session.load(SourcingDocument.class, id);
+		Hibernate.initialize(doc);
+		return doc;
 	}
 
 	@Override

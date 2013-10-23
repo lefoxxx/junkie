@@ -36,16 +36,19 @@ public class SourcingSetupServiceImpl implements SourcingSetupService {
 	}
 
 	@Override
+	@Transactional
 	public SourcingDocument get(Long id) {
 		return dao.get(id);
 	}
 
 	@Override
+	@Transactional
 	public void delete(SourcingDocument doc) {
 		dao.delete(doc);
 	}
 
 	@Override
+	@Transactional
 	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search) {
 		return dao.findByCriteria(search);
 	}
