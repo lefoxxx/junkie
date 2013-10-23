@@ -44,12 +44,14 @@ public class SourcincDocumentDaoTest extends TestBase{
     	newDoc.setDealName("SOME_DEAL_NAME");
     	List<SourcingDocument> docs = documentService.getAllDocuments();
     	int n = docs.size();
+    	newDoc.setDealName("DEAL_NAME");
 
     	documentService.save(newDoc);
     	assertEquals("Save failed", n + 1,  documentService.getAllDocuments().size());
     	
     	SourcingDocument doc = documentService.get(newDoc.getId());
     	assertNotNull("Can not load saved document", doc);
+    	assertEquals("Incorrectly saved", "DEAL_NAME", doc.getDealName());
     	
     	documentService.delete(doc);
     	assertEquals("Deletion failed", n, documentService.getAllDocuments().size());
@@ -58,21 +60,22 @@ public class SourcincDocumentDaoTest extends TestBase{
     
     @Test
     public void testSearch() {
+ 
     	String randomPart = UUID.randomUUID().toString();
     	SourcingDocument newDoc1 = new SourcingDocument();
-    	newDoc1.setDealName("deal1_" + randomPart);
+    	newDoc1.setDealName("deal1_"+ randomPart);
     	
     	SourcingDocument newDoc2 = new SourcingDocument();
     	newDoc2.setContactInfo("contact2_" + randomPart);
     	
     	SourcingDocument newDoc3 = new SourcingDocument();
-    	newDoc1.setDealName("deal3_" + randomPart);
+    	newDoc3.setDealName("deal3_" + randomPart);
     	newDoc3.setContactInfo("contact3_" + randomPart);
     	
     	documentService.save(newDoc1);
     	documentService.save(newDoc2);
     	documentService.save(newDoc3);
-    	
+
     	int n = documentService.getAllDocuments().size();
     	SourcingSetupSearch search = new SourcingSetupSearch();
     	
@@ -86,11 +89,11 @@ public class SourcincDocumentDaoTest extends TestBase{
     	
     	search.setDealName("eal3_" + randomPart);
     	search.setContactInfo("ontact3_" + randomPart);
-    	assertEquals("test3", documentService.findByCriteria(search).size());
+    	assertEquals("test3", 1, documentService.findByCriteria(search).size());
     	
     	search.setDealName(null);
     	search.setContactInfo(randomPart);
-    	assertEquals("test4", documentService.findByCriteria(search).size());
+    	assertEquals("test4", 2, documentService.findByCriteria(search).size());
     	
     }
 

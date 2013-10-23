@@ -1,5 +1,8 @@
 package tld.dmt.dao.hibernate;
 
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -43,18 +46,18 @@ public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
 	@Override
 	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search) {
 		org.hibernate.Criteria crit = sessionFactory.getCurrentSession().createCriteria(SourcingDocument.class);
-		
-		for(Field field : search.getClass().getDeclaredFields()) {
-			Object obj = null;
-			try {
-				obj = field.get(search);
-			} catch (Exception ignored) {
-			} 
-			if (obj != null) {
-				crit.add(Restrictions.like(field.getName(), "%" + obj.toString() + "%"));
+		try {
+			for(PropertyDescriptor propertyDescriptor : Introspector.getBeanInfo(SourcingSetupSearch.class).getPropertyDescriptors()){
+				String name = propertyDescriptor.getName();
+				if (!"class".equals(name)) {
+					Object obj = propertyDescriptor.getReadMethod().invoke(search);
+					if (obj != null) {
+						crit.add(Restrictions.like(name, "%"+obj.toString()+"%"));
+					}
+				}
 			}
+		} catch (Exception  ignored) {
 		}
-		System.err.println("DFDDF!!!!!!!!!!!!!!!!!");
 		return crit.list();
 
 	}
