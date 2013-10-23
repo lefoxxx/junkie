@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tld.dmt.dao.SourcingDocumentDao;
 import tld.dmt.model.SourcingDocument;
+import tld.dmt.model.SourcingSetupSearch;
 import tld.dmt.service.SourcingSetupService;
 
 
@@ -43,6 +44,10 @@ public class SourcingSetupServiceImpl implements SourcingSetupService {
 	public void delete(SourcingDocument doc) {
 		dao.delete(doc);
 	}
-	
+
+	@Override
+	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search) {
+		return dao.findByCriteria(search);
+	}
 	
 }
