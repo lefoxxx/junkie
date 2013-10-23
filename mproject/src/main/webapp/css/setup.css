@@ -18,6 +18,10 @@
     text-decoration: underline;
 }
 
+label:after {
+    content:":";
+}
+
 .setup_form_table {
     width: 100%;
     margin-bottom: 8px;

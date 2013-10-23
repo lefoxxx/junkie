@@ -153,144 +153,154 @@
             <fmt:message key="section-title-document-sourced"/>
         </span>
         <div class="setup_form_section">
-            <table class="setup_form_table">
-                <tr>
-                    <td>
-                        <form:label path="exactLocation">
-                            <fmt:message key="field-exact-location"/>
-                        </form:label>
-                    </td>
-                    <td colspan="3">
-                        <fmt:message key="field-exact-location-hint" var="exactLocationHint"/>
-                        <form:input path="exactLocation" placeholder="${exactLocationHint}" cssClass="setup_max_width"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="fileName">
-                            <fmt:message key="field-file-name"/>
-                        </form:label>
-                    </td>
-                    <td colspan="3">
-                        <fmt:message key="field-file-name-hint" var="fileNameHint"/>
-                        <form:input path="exactLocation" placeholder="${fileNameHint}" cssClass="setup_max_width"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="exactLocationUserName">
-                            <fmt:message key="field-user-name"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="exactLocationUserName"/>
-                    </td>
-                    <td>
-                        <form:label path="exactLocationPassword">
-                            <fmt:message key="field-password"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="exactLocationPassword"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="primaryUrl">
-                            <fmt:message key="field-primary-url"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="primaryUrl"/>
-                    </td>
-                    <td>
-                        <form:label path="maxDepth">
-                            <fmt:message key="field-max-depth"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="maxDepth"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="docYear">
-                            <fmt:message key="field-doc-year-to-search"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="docYear"/>
-                    </td>
-                    <td>
-                        <form:label path="docFormat">
-                            <fmt:message key="field-doc-format"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:select path="docFormat">
-                            <form:options/>"
-                        </form:select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="docNameBeginsWith">
-                            <fmt:message key="field-doc-name-begins"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="docNameBeginsWith"/>
-                    </td>
-                    <td>
-                        <form:label path="docNameEndsWith">
-                            <fmt:message key="field-doc-name-ends"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="docNameEndsWith"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="docNameContains">
-                            <fmt:message key="field-doc-name-contains"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="docNameContains"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="recrowlAttemptsNum">
-                            <fmt:message key="field-recrawl-attempts-num"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="recrowlAttemptsNum"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <form:label path="primaryUrlUserName">
-                            <fmt:message key="field-user-name"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="primaryUrlUserName"/>
-                    </td>
-                    <td>
-                        <form:label path="primaryUrlPassword">
-                            <fmt:message key="field-password"/>
-                        </form:label>
-                    </td>
-                    <td >
-                        <form:input path="primaryUrlPassword"/>
-                    </td>
-                </tr>
 
+            <fieldset>
+                <legend> <fmt:message key="field-exact-location-title"/></legend>
 
-            </table>
+                <table class="setup_form_table">
+                    <tr>
+                        <td>
+                            <form:label path="exactLocation">
+                                <fmt:message key="field-exact-location"/>
+                            </form:label>
+                        </td>
+                        <td colspan="3">
+                            <fmt:message key="field-exact-location-hint" var="exactLocationHint"/>
+                            <form:input path="exactLocation" placeholder="${exactLocationHint}" cssClass="setup_max_width"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="fileName">
+                                <fmt:message key="field-file-name"/>
+                            </form:label>
+                        </td>
+                        <td colspan="3">
+                            <fmt:message key="field-file-name-hint" var="fileNameHint"/>
+                            <form:input path="exactLocation" placeholder="${fileNameHint}" cssClass="setup_max_width"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="exactLocationUserName">
+                                <fmt:message key="field-user-name"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="exactLocationUserName"/>
+                        </td>
+                        <td>
+                            <form:label path="exactLocationPassword">
+                                <fmt:message key="field-password"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="exactLocationPassword"/>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend><fmt:message key="field-primary-url-title"/></legend>
+
+                <table class="setup_form_table">
+                    <tr>
+                        <td>
+                            <form:label path="primaryUrl">
+                                <fmt:message key="field-primary-url"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="primaryUrl"/>
+                        </td>
+                        <td>
+                            <form:label path="maxDepth">
+                                <fmt:message key="field-max-depth"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="maxDepth"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="docYear">
+                                <fmt:message key="field-doc-year-to-search"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="docYear"/>
+                        </td>
+                        <td>
+                            <form:label path="docFormat">
+                                <fmt:message key="field-doc-format"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:select path="docFormat">
+                                <form:options/>"
+                            </form:select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="docNameBeginsWith">
+                                <fmt:message key="field-doc-name-begins"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="docNameBeginsWith"/>
+                        </td>
+                        <td>
+                            <form:label path="docNameEndsWith">
+                                <fmt:message key="field-doc-name-ends"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="docNameEndsWith"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="docNameContains">
+                                <fmt:message key="field-doc-name-contains"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="docNameContains"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="recrowlAttemptsNum">
+                                <fmt:message key="field-recrawl-attempts-num"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="recrowlAttemptsNum"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form:label path="primaryUrlUserName">
+                                <fmt:message key="field-user-name"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="primaryUrlUserName"/>
+                        </td>
+                        <td>
+                            <form:label path="primaryUrlPassword">
+                                <fmt:message key="field-password"/>
+                            </form:label>
+                        </td>
+                        <td >
+                            <form:input path="primaryUrlPassword"/>
+                        </td>
+                    </tr>
+                </table>
+
+            </fieldset>
         </div>
 
         <span class="setup_section_title">
