@@ -2,6 +2,7 @@ package tld.dmt.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
+
 import tld.dmt.model.SourcingDocument;
 import tld.dmt.service.SourcingSetupService;
 
@@ -22,6 +24,7 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -45,7 +48,6 @@ public class SourcingSetupController {
         return "source/sourcing/setup/add-edit";
     }
 
-
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -67,6 +69,8 @@ public class SourcingSetupController {
 
         log.info("NLP Process value: " + sourcingDoc.getNlpProcess());
         log.info("Start date value: " + sourcingDoc.getStartDate());
+        
+        sourcingSetupService.save(sourcingDoc);
 
     }
 

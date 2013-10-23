@@ -1,6 +1,14 @@
 package tld.dmt.service.impl;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import tld.dmt.dao.SourcingDocumentDao;
+import tld.dmt.model.SourcingDocument;
 import tld.dmt.service.SourcingSetupService;
 
 
@@ -9,6 +17,22 @@ import tld.dmt.service.SourcingSetupService;
  */
 @Service("sourcingSetupService")
 public class SourcingSetupServiceImpl implements SourcingSetupService {
+
+
+	@Autowired
+	@Qualifier("sourcingDocumentDao")
+	private SourcingDocumentDao dao;
+
+	
+	@Transactional
+	public List<SourcingDocument> getAllDocuments() {
+		return dao.getAllDocuments();
+	}
+	
+	@Transactional
+	public void save(SourcingDocument doc) {
+		dao.save(doc);
+	}
 
 
 }
