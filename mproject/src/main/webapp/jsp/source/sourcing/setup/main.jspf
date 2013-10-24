@@ -9,4 +9,12 @@
     <portlet:param name="operation" value="showAddEditDocForm"></portlet:param>
 </portlet:renderURL>
 
+<portlet:renderURL var="readDocumentsFromDbUrl">
+    <portlet:param name="action" value="setup"></portlet:param>
+    <portlet:param name="operation" value="readDocumentsFromDb"></portlet:param>
+</portlet:renderURL>
+
+
 <a href="${addEditDocFormUrl}"><fmt:message key="add-edit-doc"/></a>
+<a href="${readDocumentsFromDbUrl}"><fmt:message key="search-list-docs"/></a>
+
