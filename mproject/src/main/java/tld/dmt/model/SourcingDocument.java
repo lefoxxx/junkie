@@ -11,13 +11,17 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "sourcing_document")
-@NamedQueries({ @NamedQuery(name = SourcingDocument.ALL, query = "SELECT u FROM SourcingDocument u"),
-				
-})
+@NamedQueries(
+        {
+                @NamedQuery(name = SourcingDocument.ALL, query = "SELECT u FROM SourcingDocument u"),
+                @NamedQuery(name = SourcingDocument.DELETE_BY_IDS, query = "DELETE FROM SourcingDocument where id in (:ids)")
+        }
+)
 public class SourcingDocument {
-	public static final String ALL = "SourcingDocument.ALL";
+    public static final String ALL = "SourcingDocument.ALL";
+    public static final String DELETE_BY_IDS = "SourcingDocument.DELETE_BY_IDS";
 
-	public enum SourceType {
+    public enum SourceType {
 		MANUAL, FTP, WEB, SERVER
 	}
 
@@ -148,7 +152,6 @@ public class SourcingDocument {
 	public Boolean getNlpProcess() {
 		return nlpProcess;
 	}
-
 	public void setNlpProcess(Boolean nlpProcess) {
 		this.nlpProcess = nlpProcess;
 	}
@@ -344,5 +347,28 @@ public class SourcingDocument {
 	public void setAdditionalEmailContent(String additionalEmailContent) {
 		this.additionalEmailContent = additionalEmailContent;
 	}
+	
 
+	@Override
+	public String toString() {
+		return "SourcingDocument [id=" + id + ", dealName=" + dealName
+				+ ", docType=" + docType + ", sourceType=" + sourceType
+				+ ", nlpProcess=" + nlpProcess + ", contactInfo=" + contactInfo
+				+ ", defaultLanguage=" + defaultLanguage + ", defaultCurrency="
+				+ defaultCurrency + ", status=" + status + ", sourceFrequency="
+				+ sourceFrequency + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", defaultUom=" + defaultUom + ", exactLocation="
+				+ exactLocation + ", fileName=" + fileName
+				+ ", exactLocationUserName=" + exactLocationUserName
+				+ ", exactLocationPassword=" + exactLocationPassword
+				+ ", primaryUrl=" + primaryUrl + ", maxDepth=" + maxDepth
+				+ ", docYear=" + docYear + ", docFormat=" + docFormat
+				+ ", docNameBeginsWith=" + docNameBeginsWith
+				+ ", docNameEndsWith=" + docNameEndsWith + ", docNameContains="
+				+ docNameContains + ", recrowlAttemptsNum="
+				+ recrowlAttemptsNum + ", primaryUrlUserName="
+				+ primaryUrlUserName + ", primaryUrlPassword="
+				+ primaryUrlPassword + ", exceptionsEmail=" + exceptionsEmail
+				+ ", additionalEmailContent=" + additionalEmailContent + "]";
+	}
 }
