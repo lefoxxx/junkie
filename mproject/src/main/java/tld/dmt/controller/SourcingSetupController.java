@@ -20,6 +20,8 @@ import tld.dmt.service.SourcingSetupService;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
+import javax.portlet.RenderRequest;
+import javax.portlet.RenderResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,6 +31,7 @@ import java.util.Date;
 
 @Controller("sourcingSetupController")
 @RequestMapping(value = "VIEW", params="action=setup")
+
 public class SourcingSetupController {
 
     private static final Log log = LogFactoryUtil.getLog(SourcingSetupController.class);
@@ -42,10 +45,7 @@ public class SourcingSetupController {
         return "source/sourcing/setup/add-edit";
     }
 
-    /**
-     * Method sets default date format
-     * @param binder
-     */
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -69,5 +69,11 @@ public class SourcingSetupController {
         log.info("Start date value: " + sourcingDoc.getStartDate());
 
     }
+
+    @RenderMapping (params="action=successDocCreation")
+    public String showSuccessDocCreationPage(RenderRequest request, RenderResponse response, Model model){
+        return "source/sourcing/setup/success";
+    }
+
 
 }

@@ -8,6 +8,7 @@
         <property name="use_sql_comments">true</property>
         <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+         <property name="hbm2ddl.auto">update</property>
 <!-- 
         <mapping class="tld.dmt.model.FileUploaded"/>
  -->        

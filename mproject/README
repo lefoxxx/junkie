@@ -57,6 +57,45 @@ create table FILE_UPLOADED(
    PRIMARY KEY( id )
 ) ENGINE = InnoDB;
 
+
+
+CREATE TABLE `sourcing_document` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `additionalEmailContent` varchar(255) DEFAULT NULL,
+  `contactInfo` varchar(255) DEFAULT NULL,
+  `dealName` varchar(255) DEFAULT NULL,
+  `defaultCurrency` int(11) DEFAULT NULL,
+  `defaultLanguage` int(11) DEFAULT NULL,
+  `defaultUom` double DEFAULT NULL,
+  `docFormat` int(11) DEFAULT NULL,
+  `docNameBeginsWith` varchar(255) DEFAULT NULL,
+  `docNameContains` varchar(255) DEFAULT NULL,
+  `docNameEndsWith` varchar(255) DEFAULT NULL,
+  `docType` varchar(255) DEFAULT NULL,
+  `docYear` int(11) DEFAULT NULL,
+  `endDate` datetime DEFAULT NULL,
+  `exactLocation` varchar(255) DEFAULT NULL,
+  `exactLocationPassword` varchar(255) DEFAULT NULL,
+  `exactLocationUserName` varchar(255) DEFAULT NULL,
+  `exceptionsEmail` varchar(255) DEFAULT NULL,
+  `fileName` varchar(255) DEFAULT NULL,
+  `maxDepth` int(11) DEFAULT NULL,
+  `nlpProcess` bit(1) DEFAULT NULL,
+  `primaryUrl` varchar(255) DEFAULT NULL,
+  `primaryUrlPassword` varchar(255) DEFAULT NULL,
+  `primaryUrlUserName` varchar(255) DEFAULT NULL,
+  `recrowlAttemptsNum` int(11) DEFAULT NULL,
+  `sourceFrequency` int(11) DEFAULT NULL,
+  `sourceType` int(11) DEFAULT NULL,
+  `startDate` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8
+
+
 insert into FILE_UPLOADED( filename, filesize, updated_on )
 values( 'messages.log', 123456, CURRENT_TIMESTAMP );
+
+
+
   
