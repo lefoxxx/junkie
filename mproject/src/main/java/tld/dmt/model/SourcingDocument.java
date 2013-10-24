@@ -1,16 +1,10 @@
 package tld.dmt.model;
 
+import org.hibernate.type.SingleColumnType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author imustafin
@@ -49,7 +43,9 @@ public class SourcingDocument {
 
 	@Id
 	@Column(name = "ID", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="sourcing_document_seq", sequenceName="sourcing_document_seq")//Oracle
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="sourcing_document_seq")//Oracle
 	private Long id;
 
 	@Column(name = "dealName")
