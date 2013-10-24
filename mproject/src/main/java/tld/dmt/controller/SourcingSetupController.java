@@ -95,6 +95,16 @@ public class SourcingSetupController {
         final ModelAndView mav = new ModelAndView("source/sourcing/setup/add-edit" );
         mav.addObject("sourcingDoc", doc);
         return mav;
-    }    
+    }
+
+    @ActionMapping(params = "operation=deleteDoc")
+    public void deleteDocuments(@RequestParam(value = "docId", required = false) List<Long> docId, ActionRequest request, ActionResponse response) {
+        if (docId != null) {
+            log.info("Delete document(s): " + docId);
+            sourcingSetupService.delete(docId);
+        }
+        response.setRenderParameter("action", "setup");
+        response.setRenderParameter("operation", "readDocumentsFromDb");
+    }
 
 }

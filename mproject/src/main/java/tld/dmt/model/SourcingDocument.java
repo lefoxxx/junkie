@@ -17,13 +17,17 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "sourcing_document")
-@NamedQueries({ @NamedQuery(name = SourcingDocument.ALL, query = "SELECT u FROM SourcingDocument u"),
-				
-})
+@NamedQueries(
+        {
+                @NamedQuery(name = SourcingDocument.ALL, query = "SELECT u FROM SourcingDocument u"),
+                @NamedQuery(name = SourcingDocument.DELETE_BY_IDS, query = "DELETE FROM SourcingDocument where id in (:ids)")
+        }
+)
 public class SourcingDocument {
-	public static final String ALL = "SourcingDocument.ALL";
+    public static final String ALL = "SourcingDocument.ALL";
+    public static final String DELETE_BY_IDS = "SourcingDocument.DELETE_BY_IDS";
 
-	public enum SourceType {
+    public enum SourceType {
 		MANUAL, FTP, WEB, SERVER
 	}
 

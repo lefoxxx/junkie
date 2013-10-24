@@ -2,9 +2,11 @@ package tld.dmt.dao.hibernate;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -47,7 +49,14 @@ public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
 		sessionFactory.getCurrentSession().delete(doc);
 	}
 
-	@SuppressWarnings("unchecked")
+    @Override
+    public void delete(Collection<Long> ids) {
+        Query query = sessionFactory.getCurrentSession().getNamedQuery(SourcingDocument.DELETE_BY_IDS);
+        query.setParameterList("ids", ids);
+        query.executeUpdate();
+    }
+
+    @SuppressWarnings("unchecked")
 	@Override
 	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search) {
 		org.hibernate.Criteria crit = sessionFactory.getCurrentSession().createCriteria(SourcingDocument.class);

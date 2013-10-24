@@ -1,5 +1,6 @@
 package tld.dmt.service.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,13 @@ public class SourcingSetupServiceImpl implements SourcingSetupService {
 		dao.delete(doc);
 	}
 
-	@Override
+    @Override
+    @Transactional
+    public void delete(Collection<Long> ids) {
+        dao.delete(ids);
+    }
+
+    @Override
 	@Transactional
 	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search) {
 		return dao.findByCriteria(search);
