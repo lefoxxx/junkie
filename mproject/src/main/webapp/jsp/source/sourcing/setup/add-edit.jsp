@@ -1,6 +1,10 @@
-<%@ include file="../config.jspf"%>
+<%@ include file="../config.jspf" %>
 
 <fmt:setBundle basename="tld.dmt.source.resource.Language"/>
+
+<c:set var="ns"> <%--Portlet Namespace will be referenced in code as ${ns}--%>
+    <portlet:namespace/>
+</c:set>
 
 <div id="setup_form_wrapper">
 
@@ -9,7 +13,7 @@
         <portlet:param name="operation" value="createOrEditDoc"></portlet:param>
     </portlet:actionURL>
 
-    <form:form action="${createOrEditDocUrl}" method="post" commandName="sourcingDoc">
+    <form:form action="${createOrEditDocUrl}" method="post" commandName="sourcingDoc" id="${ns}_add_edit_form">
         <div class="setup_form_section">
             <table class="setup_form_table">
                 <tr>
@@ -60,7 +64,9 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="startDate"/>
+                        <div id="${ns}start_date_wrapper">
+                            <form:input path="startDate" id="${ns}start_date"/>
+                        </div>
                     </td>
                 </tr>
                 <tr>
@@ -84,7 +90,9 @@
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="endDate"/>
+                        <div id="${ns}end_date_wrapper">
+                            <form:input path="endDate" id="${ns}end_date"/>
+                        </div>
                     </td>
                 </tr>
 
@@ -95,7 +103,7 @@
                         </form:label>
                     </td>
                     <td colspan="3">
-                        <form:textarea cssClass="setup_max_width" path="contactInfo" rows="2" />
+                        <form:textarea cssClass="setup_max_width" path="contactInfo" rows="2"/>
                     </td>
                 </tr>
                 <tr>
@@ -149,13 +157,14 @@
             </table>
         </div>
 
-        <span class="setup_section_title">
-            <fmt:message key="section-title-document-sourced"/>
-        </span>
+                <span class="setup_section_title">
+                    <fmt:message key="section-title-document-sourced"/>
+                </span>
+
         <div class="setup_form_section">
 
             <fieldset>
-                <legend> <fmt:message key="field-exact-location-title"/></legend>
+                <legend><fmt:message key="field-exact-location-title"/></legend>
 
                 <table class="setup_form_table">
                     <tr>
@@ -186,7 +195,7 @@
                                 <fmt:message key="field-user-name"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="exactLocationUserName"/>
                         </td>
                         <td>
@@ -194,7 +203,7 @@
                                 <fmt:message key="field-password"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="exactLocationPassword"/>
                         </td>
                     </tr>
@@ -210,7 +219,7 @@
                                 <fmt:message key="field-primary-url"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="primaryUrl"/>
                         </td>
                         <td>
@@ -218,7 +227,7 @@
                                 <fmt:message key="field-max-depth"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="maxDepth"/>
                         </td>
                     </tr>
@@ -228,7 +237,7 @@
                                 <fmt:message key="field-doc-year-to-search"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="docYear"/>
                         </td>
                         <td>
@@ -236,7 +245,7 @@
                                 <fmt:message key="field-doc-format"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:select path="docFormat">
                                 <form:options/>"
                             </form:select>
@@ -248,7 +257,7 @@
                                 <fmt:message key="field-doc-name-begins"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="docNameBeginsWith"/>
                         </td>
                         <td>
@@ -256,7 +265,7 @@
                                 <fmt:message key="field-doc-name-ends"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="docNameEndsWith"/>
                         </td>
                     </tr>
@@ -266,7 +275,7 @@
                                 <fmt:message key="field-doc-name-contains"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="docNameContains"/>
                         </td>
                     </tr>
@@ -276,7 +285,7 @@
                                 <fmt:message key="field-recrawl-attempts-num"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="recrowlAttemptsNum"/>
                         </td>
                     </tr>
@@ -286,7 +295,7 @@
                                 <fmt:message key="field-user-name"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="primaryUrlUserName"/>
                         </td>
                         <td>
@@ -294,7 +303,7 @@
                                 <fmt:message key="field-password"/>
                             </form:label>
                         </td>
-                        <td >
+                        <td>
                             <form:input path="primaryUrlPassword"/>
                         </td>
                     </tr>
@@ -303,9 +312,10 @@
             </fieldset>
         </div>
 
-        <span class="setup_section_title">
-            <fmt:message key="section-title-exceptions"/>
-        </span>
+                <span class="setup_section_title">
+                    <fmt:message key="section-title-exceptions"/>
+                </span>
+
         <div class="setup_form_section">
             <table class="setup_form_table">
                 <tr>
@@ -340,7 +350,32 @@
             <input type="submit" value="<fmt:message key="save"/>"/>
             <a href="<portlet:renderURL/>"><fmt:message key="cancel"/></a>
         </div>
-
     </form:form>
 </div>
 
+<script>
+    AUI().use(
+            'aui-datepicker',
+            function(A) {
+
+                new A.DatePicker (
+                        {
+                            calendar: {
+                                dateFormat: '%d/%m/%Y'
+                            },
+                            trigger: '#${ns}start_date'
+                        }
+                ).render('#${ns}start_date_wrapper');
+
+                new A.DatePicker(
+                        {
+                            calendar: {
+                                dateFormat: '%d/%m/%Y'
+                                /*dates: ['10/10/2013']*/
+                            },
+                            trigger: '#${ns}end_date'
+                        }
+                ).render('#${ns}end_date_wrapper');
+            }
+    );
+</script>
