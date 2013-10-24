@@ -1,17 +1,16 @@
 package tld.dmt.service.impl;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import tld.dmt.dao.SourcingDocumentDao;
 import tld.dmt.model.SourcingDocument;
 import tld.dmt.model.SourcingSetupSearch;
 import tld.dmt.service.SourcingSetupService;
+
+import java.util.Collection;
+import java.util.List;
 
 
 /**
