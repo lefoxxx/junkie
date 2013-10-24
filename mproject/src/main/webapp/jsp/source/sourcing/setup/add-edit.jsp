@@ -173,7 +173,7 @@
                     </td>
                     <td colspan="3">
                         <fmt:message key="field-file-name-hint" var="fileNameHint"/>
-                        <form:input path="exactLocation" placeholder="${fileNameHint}" cssClass="setup_max_width"/>
+                        <form:input path="fileName" placeholder="${fileNameHint}" cssClass="setup_max_width"/>
                     </td>
                 </tr>
                 <tr>
