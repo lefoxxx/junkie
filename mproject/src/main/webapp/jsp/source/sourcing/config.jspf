@@ -1,5 +1,6 @@
 <%-- This JSP page will be included in other JSPs for minimizing import statements--%>
-
+ 
+ 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
@@ -12,7 +13,7 @@
 <%@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %>
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
-
+<fmt:setBundle basename="tld.dmt.source.resource.Language"/>
 <%--Importing JSR-286 specific implicit variables.
 Read more: https://blogs.oracle.com/deepakg/entry/jsr286_defineobjects_tag  --%>
 <portlet:defineObjects />
