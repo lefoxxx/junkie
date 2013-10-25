@@ -2,6 +2,8 @@
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags" %>
+<%@ include file="../config.jspf"%>
+<fmt:setBundle basename="tld.dmt.source.resource.Language"/>
 
 <layout:navigation item="setup" type="vertical">
 <jsp:body>
