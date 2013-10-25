@@ -43,6 +43,11 @@ public class SourcingSetupController {
     @Qualifier("sourcingSetupService")
     private SourcingSetupService sourcingSetupService;
 
+    @RenderMapping()
+    public String defaultRender(Model model) {
+        return "source/sourcing/setup/main";
+    }
+    
     @RenderMapping(params = "operation=showAddEditDocForm")
     public String showAddEditForm(Model model) {
         return "source/sourcing/setup/add-edit";

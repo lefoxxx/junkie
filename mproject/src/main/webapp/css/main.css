@@ -4,3 +4,7 @@
     By project convention style names in CSS files corresponding to tabs, must be prefixed with <short_tab_name>
 */
 @import url(setup.css);
+
+.navigation-content {
+	vertical-align : top;
+}

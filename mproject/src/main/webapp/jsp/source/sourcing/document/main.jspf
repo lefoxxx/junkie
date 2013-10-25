@@ -1,1 +1,0 @@
-<h1><%= LanguageUtil.get(pageContext, "tag-document-tab-name") %></h1>

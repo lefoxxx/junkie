@@ -43,7 +43,7 @@ public class BaseController {
      */
     @RenderMapping
     public String showMainView(RenderRequest request, RenderResponse response, Model model) {
-        return "source/sourcing/main";
+        return "source/sourcing/setup/main";
     }
 
     @ActionMapping(params = "action=showFiles")
