@@ -1,23 +1,17 @@
 <%@ include file="config.jspf"%>
 
-<%@page import="com.liferay.portal.util.PortalUtil"%>
-<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
 <%@page import="java.io.PrintWriter"%>
 
 <%-- Error page temporary stub --%>
 
 <%
-    String portletTitle = PortalUtil.getPortletTitle(renderResponse);
-    if (portletTitle == null) {
-        portletTitle = LanguageUtil.get(pageContext, "portlet");
-    }
     Throwable t = (Throwable) request.getAttribute("exception");
 %>
 <p>
     <h1>An error occurred during the request</h1>
 </p>
 <p>
-    Error message: <%= t.getMessage() %>
+Error message:  <% if (t != null) t.getMessage(); %>
 </p>
 
 <hr/>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.portlet.ModelAndView;
 import org.springframework.web.portlet.bind.annotation.ActionMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
+import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 import tld.dmt.model.SourcingDocument;
 import tld.dmt.service.SourcingSetupService;
 
@@ -34,7 +35,6 @@ import java.util.List;
 
 @Controller("sourcingSetupController")
 @RequestMapping(value = "VIEW", params="action=setup")
-
 public class SourcingSetupController {
 
     private static final Log log = LogFactoryUtil.getLog(SourcingSetupController.class);
@@ -112,4 +112,15 @@ public class SourcingSetupController {
     }
 
 
+    /* FIXME Need to think how to create MainController, which will handle request common to all controllers.
+       For example this method must be excluded to MainController */
+    /**
+     * Returns content of required page
+     * @param pageAddress page address
+     * @return content of page
+     */
+    @ResourceMapping
+    public String getPageContent(@RequestParam(value = "pageAddress") String pageAddress) {
+        return pageAddress;
+    }
 }
