@@ -48,6 +48,7 @@ Read more: https://blogs.oracle.com/deepakg/entry/jsr286_defineobjects_tag  --%>
 		String keys[] = null;
 		
 		final String SOURCING_SETUP_TAB_ID = "sourcing-setup-tab-name";
+		final String SOURCING_LIST_TAB_ID = "sourcing-list-tab-name";
 		final String FILE_UPLOAD_TAB_ID = "file-upload-tab-name";
 		final String TAG_DOCUMENT_TAB_ID = "tag-document-tab-name";
 		final String SOURCING_SUMMARY_TAB_ID = "sourcing-summary-tab-name";
@@ -58,8 +59,8 @@ Read more: https://blogs.oracle.com/deepakg/entry/jsr286_defineobjects_tag  --%>
 			ids = new String[] {"setup", "extraction", "search", "reports", "tasks", "admin", "home"};
 			keys = new String[] {"sourcing-nav-key", "extraction-nav-key", "search-nav-key", "reports-nav-key", "tasks-nav-key", "admin-nav-key", "home-nav-key"};
 		} else {
-			ids = new String[] { "setup",  "upload", "tagdoc", "summary", "homepage" };
-			keys = new String[] {"sourcing-setup-tab-name", "file-upload-tab-name", "tag-document-tab-name", "sourcing-summary-tab-name", "sourcing-homepage-tab-name"};
+			ids = new String[] { "setup", "list",  "upload", "tagdoc", "summary", "homepage" };
+			keys = new String[] {"sourcing-setup-tab-name", "sourcing-list-tab-name", "file-upload-tab-name", "tag-document-tab-name", "sourcing-summary-tab-name", "sourcing-homepage-tab-name"};
 		}
 		
 
