@@ -13,7 +13,7 @@
         <portlet:param name="operation" value="createOrEditDoc"></portlet:param>
     </portlet:actionURL>
 
-    <form:form action="${createOrEditDocUrl}" method="post" commandName="sourcingDoc" id="${ns}_add_edit_form">
+    <form:form action="${createOrEditDocUrl}" method="post" commandName="sourcingDoc" id="${ns}add_edit_form">
         <div class="setup_form_section">
             <form:hidden path="id"/>
             <table class="setup_form_table">
@@ -30,12 +30,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="docType">
+                        <form:label path="docType" cssClass="aui-field-label">
                             <fmt:message key="field-doc-type"/>
                         </form:label>
                     </td>
                     <td>
-                        <form:input path="docType"/>
+                        <form:input path="docType" cssClass="aui-field-required"/>
                     </td>
                     <td>
                         <form:label path="sourceFrequency">
@@ -354,9 +354,9 @@
     </form:form>
 </div>
 
-<script>
+<script use="aui-form-validator">
     AUI().use(
-            'aui-datepicker',
+            'aui-datepicker', 'aui-form-validator',
             function(A) {
 
                 new A.DatePicker (
@@ -377,6 +377,18 @@
                             trigger: '#${ns}end_date'
                         }
                 ).render('#${ns}end_date_wrapper');
+
+                new A.FormValidator(
+                        {
+                            boundingBox: '#${ns}add_edit_form'
+                            /*rules: {
+                                docType: {
+                                    required: true
+                                }
+                            }*/
+                        }
+                );
+
             }
     );
 </script>

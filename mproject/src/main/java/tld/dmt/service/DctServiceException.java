@@ -7,17 +7,17 @@ package tld.dmt.service;
 /**
  * Base exception class that can be thrown from "sourcing" services
  */
-public class DmtException extends RuntimeException {
+public class DctServiceException extends RuntimeException {
 
-    public DmtException(String message) {
+    public DctServiceException(String message) {
         super (message);
     }
 
-    public DmtException(Throwable cause) {
+    public DctServiceException(Throwable cause) {
         super (cause);
     }
 
-    public DmtException(String message, Throwable cause) {
+    public DctServiceException(String message, Throwable cause) {
         super (message, cause);
     }
 }

@@ -18,7 +18,7 @@
     text-decoration: underline;
 }
 
-label:after {
+#setup_form_wrapper label:after {
     content:":";
 }
 
