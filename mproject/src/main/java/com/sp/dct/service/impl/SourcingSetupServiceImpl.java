@@ -1,15 +1,15 @@
-package tld.dmt.service.impl;
+package com.sp.dct.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import tld.dmt.dao.SourcingDocumentDao;
-import tld.dmt.model.SortingCriteria;
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
-import tld.dmt.service.SourcingSetupService;
+import com.sp.dct.dao.SourcingDocumentDao;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
+import com.sp.dct.service.SourcingSetupService;
 
 import java.util.Collection;
 import java.util.List;

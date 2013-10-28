@@ -12,12 +12,12 @@ import java.util.UUID;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import tld.dmt.dao.FileUploadedDao;
-import tld.dmt.model.SortingCriteria;
-import tld.dmt.model.SortingCriteria.OrderType;
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
-import tld.dmt.service.SourcingSetupService;
+import com.sp.dct.dao.FileUploadedDao;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
+import com.sp.dct.model.SortingCriteria.OrderType;
+import com.sp.dct.service.SourcingSetupService;
 
 public class SourcincDocumentDaoTest extends TestBase{
 

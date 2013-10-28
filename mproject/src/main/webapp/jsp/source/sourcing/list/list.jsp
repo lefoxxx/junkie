@@ -12,7 +12,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 
-<%@page import="tld.dmt.model.SourcingDocument"%>
+<%@page import="com.sp.dct.model.SourcingDocument"%>
 
 <%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
 

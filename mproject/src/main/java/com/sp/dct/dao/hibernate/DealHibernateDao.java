@@ -1,11 +1,12 @@
-package tld.dmt.dao.hibernate;
+package com.sp.dct.dao.hibernate;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import tld.dmt.dao.DealDao;
-import tld.dmt.model.Deal;
+
+import com.sp.dct.dao.DealDao;
+import com.sp.dct.model.Deal;
 
 import java.util.Collection;
 import java.util.List;

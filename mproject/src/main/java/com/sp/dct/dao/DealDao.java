@@ -1,9 +1,9 @@
-package tld.dmt.dao;
-
-import tld.dmt.model.Deal;
+package com.sp.dct.dao;
 
 import java.util.Collection;
 import java.util.List;
+
+import com.sp.dct.model.Deal;
 
 public interface DealDao {
 

@@ -1,4 +1,4 @@
-package tld.dmt.model;
+package com.sp.dct.model;
 
 import java.util.ArrayList;
 import java.util.List;

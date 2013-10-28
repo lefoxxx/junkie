@@ -1,4 +1,4 @@
-package tld.dmt.dao.hibernate;
+package com.sp.dct.dao.hibernate;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -14,11 +14,11 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import tld.dmt.dao.SourcingDocumentDao;
-import tld.dmt.model.SortingCriteria;
-import tld.dmt.model.SortingCriteria.OrderType;
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
+import com.sp.dct.dao.SourcingDocumentDao;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
+import com.sp.dct.model.SortingCriteria.OrderType;
 
 @Repository("sourcingDocumentDao")
 public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {

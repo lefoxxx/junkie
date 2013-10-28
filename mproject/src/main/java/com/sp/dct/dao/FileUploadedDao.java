@@ -1,8 +1,8 @@
-package tld.dmt.dao;
+package com.sp.dct.dao;
 
 import java.util.List;
 
-import tld.dmt.model.FileUploaded;
+import com.sp.dct.model.FileUploaded;
 
 /**
  * Author: ejolos

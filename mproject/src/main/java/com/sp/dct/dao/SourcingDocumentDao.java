@@ -1,11 +1,11 @@
-package tld.dmt.dao;
+package com.sp.dct.dao;
 
 import java.util.Collection;
 import java.util.List;
 
-import tld.dmt.model.SortingCriteria;
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
 
 public interface SourcingDocumentDao {
 

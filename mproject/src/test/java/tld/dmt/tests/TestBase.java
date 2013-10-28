@@ -14,10 +14,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import tld.dmt.dao.FileUploadedDao;
-import tld.dmt.dao.SourcingDocumentDao;
-import tld.dmt.model.FileUploaded;
-import tld.dmt.model.SourcingDocument;
+import com.sp.dct.dao.FileUploadedDao;
+import com.sp.dct.dao.SourcingDocumentDao;
+import com.sp.dct.model.FileUploaded;
+import com.sp.dct.model.SourcingDocument;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)

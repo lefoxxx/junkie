@@ -2,6 +2,8 @@ package tld.dmt.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.service.SourcingSetupService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,9 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import tld.dmt.model.SortingCriteria;
-import tld.dmt.service.SourcingSetupService;
 
 
 /**

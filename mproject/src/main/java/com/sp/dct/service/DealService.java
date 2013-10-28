@@ -1,10 +1,11 @@
-package tld.dmt.service;
+package com.sp.dct.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tld.dmt.dao.DealDao;
-import tld.dmt.model.Deal;
+
+import com.sp.dct.dao.DealDao;
+import com.sp.dct.model.Deal;
 
 import java.util.Collection;
 import java.util.List;

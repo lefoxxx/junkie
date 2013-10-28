@@ -1,4 +1,4 @@
-package tld.dmt.model;
+package com.sp.dct.model;
 
 public class SourcingSetupSearch {
 	private String dealName;

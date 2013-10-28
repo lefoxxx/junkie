@@ -1,11 +1,11 @@
-package tld.dmt.service;
-
-import tld.dmt.model.SortingCriteria;
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
+package com.sp.dct.service;
 
 import java.util.Collection;
 import java.util.List;
+
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
 
 /**
  * @author imustafin
