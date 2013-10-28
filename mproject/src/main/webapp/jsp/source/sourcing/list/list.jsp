@@ -30,6 +30,8 @@
 <%
 
     PortletURL portletURL = renderResponse.createRenderURL();
+	portletURL.setParameter("action", "list");
+	portletURL.setParameter("operation", "showList");
     SearchContainer searchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, 20, portletURL, null, null);
     
     
