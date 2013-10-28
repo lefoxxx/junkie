@@ -3,6 +3,7 @@ package tld.dmt.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,12 +21,14 @@ import javax.persistence.Table;
 @NamedQueries(
         {
                 @NamedQuery(name = SourcingDocument.ALL, query = "SELECT u FROM SourcingDocument u"),
-                @NamedQuery(name = SourcingDocument.DELETE_BY_IDS, query = "DELETE FROM SourcingDocument where id in (:ids)")
+                @NamedQuery(name = SourcingDocument.DELETE_BY_IDS, query = "DELETE FROM SourcingDocument where id in (:ids)"),
+                @NamedQuery(name = SourcingDocument.GET_COUNT, query = "SELECT count(*) FROM SourcingDocument")
         }
 )
 public class SourcingDocument {
     public static final String ALL = "SourcingDocument.ALL";
     public static final String DELETE_BY_IDS = "SourcingDocument.DELETE_BY_IDS";
+    public static final String GET_COUNT = "SourcingDocument.GET_COUNT";
 
     public enum SourceType {
 		MANUAL, FTP, WEB, SERVER
@@ -375,4 +378,31 @@ public class SourcingDocument {
 				+ primaryUrlPassword + ", exceptionsEmail=" + exceptionsEmail
 				+ ", additionalEmailContent=" + additionalEmailContent + "]";
 	}
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SourcingDocument other = (SourcingDocument) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+	
+	
 }

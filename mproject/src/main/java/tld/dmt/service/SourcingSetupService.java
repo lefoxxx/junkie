@@ -1,5 +1,6 @@
 package tld.dmt.service;
 
+import tld.dmt.model.SortingCriteria;
 import tld.dmt.model.SourcingDocument;
 import tld.dmt.model.SourcingSetupSearch;
 
@@ -17,5 +18,9 @@ public interface SourcingSetupService {
     public void delete(Collection<Long> ids);
 
 	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search);
+	
+    int getDocumentsCount();
+    List<SourcingDocument> getDocuments(int pageStart, int pageSize, SortingCriteria sorting);
+
 
 }

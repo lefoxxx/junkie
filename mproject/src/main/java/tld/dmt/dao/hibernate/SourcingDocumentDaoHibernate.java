@@ -9,11 +9,14 @@ import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import tld.dmt.dao.SourcingDocumentDao;
+import tld.dmt.model.SortingCriteria;
+import tld.dmt.model.SortingCriteria.OrderType;
 import tld.dmt.model.SourcingDocument;
 import tld.dmt.model.SourcingSetupSearch;
 
@@ -74,5 +77,30 @@ public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
 		}
 		return crit.list();
 
+	}
+
+	@Override
+	public int getDocumentsCount() {
+	    Query query = sessionFactory.getCurrentSession().getNamedQuery(SourcingDocument.GET_COUNT);
+	    Object data = query.list().get(0);
+	    Number count = (Number)(data);
+        return count.intValue();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SourcingDocument> getDocuments(int pageStart, int pageSize,	SortingCriteria sorting) {
+	    org.hibernate.Criteria crit = sessionFactory.getCurrentSession().createCriteria(SourcingDocument.class);
+	    
+	    if (sorting != null) {
+	        for(SortingCriteria.SortField sort : sorting.getFields()) {
+	            Order order = OrderType.ASCENDING.equals(sort.getOrder()) ? Order.asc(sort.getFieldName()) : Order.desc(sort.getFieldName());
+	            crit.addOrder(order);
+	        }
+	    }
+	    
+	    crit.setFirstResult(pageStart * pageSize);
+	    crit.setMaxResults(pageSize);
+	    return crit.list();
 	}
 }

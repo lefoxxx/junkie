@@ -1,10 +1,11 @@
 package tld.dmt.dao;
 
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
-
 import java.util.Collection;
 import java.util.List;
+
+import tld.dmt.model.SortingCriteria;
+import tld.dmt.model.SourcingDocument;
+import tld.dmt.model.SourcingSetupSearch;
 
 public interface SourcingDocumentDao {
 
@@ -13,6 +14,9 @@ public interface SourcingDocumentDao {
     SourcingDocument get(Long id);
     void delete(SourcingDocument doc);
     void delete(Collection<Long> ids);
+    
+    int getDocumentsCount();
+    List<SourcingDocument> getDocuments(int pageStart, int pageSize, SortingCriteria sorting);
     List<SourcingDocument> findByCriteria(SourcingSetupSearch search); 
    
 }
