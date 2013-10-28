@@ -22,11 +22,7 @@
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="java:comp/env/jdbc/dmt"/>
     </bean>
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 72508f2e87de1e87a798a38a59106bb6d32469a3
 	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" lazy-init="true">
