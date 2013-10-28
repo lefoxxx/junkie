@@ -39,6 +39,22 @@ root-context.xml contains the following:
 Either try to create an identical setup on your machine or change this file as needed but be careful not to 
 commit it.
 
+To use JNDI data source for the db connection, add the following to the tomcat's server.xml under the <GlobalNamingResources>,
+aadjusting if required:
+
+    <Resource name="jdbc/dmt" auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://127.0.0.1:3306/dmt?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf-8&amp;useUnicode=true"
+              username="dmt"
+              password="123456"/>
+
+To force this working on portlet hot deploy, turn off security manager in your liferay development environment by adding a property:
+portal.security.manager.strategy=none
+
+to the file [liferay-home]/portal-ext.properties
+
+
 3) This is the DDL you need to execute in MySQL:
 
 create database dmt;
