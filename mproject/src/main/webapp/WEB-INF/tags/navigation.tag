@@ -59,8 +59,8 @@ Read more: https://blogs.oracle.com/deepakg/entry/jsr286_defineobjects_tag  --%>
 			ids = new String[] {"setup", "extraction", "search", "reports", "tasks", "admin", "home"};
 			keys = new String[] {"sourcing-nav-key", "extraction-nav-key", "search-nav-key", "reports-nav-key", "tasks-nav-key", "admin-nav-key", "home-nav-key"};
 		} else {
-			ids = new String[] { "setup", "list",  "upload", "tagdoc", "summary", "homepage" };
-			keys = new String[] {"sourcing-setup-tab-name", "sourcing-list-tab-name", "file-upload-tab-name", "tag-document-tab-name", "sourcing-summary-tab-name", "sourcing-homepage-tab-name"};
+			ids = new String[] { "setup", "list",  "upload", "tagdoc", "summary", "homepage", "deal" };
+			keys = new String[] {"sourcing-setup-tab-name", "sourcing-list-tab-name", "file-upload-tab-name", "tag-document-tab-name", "sourcing-summary-tab-name", "sourcing-homepage-tab-name", "deal-tab-name"};
 		}
 		
 
