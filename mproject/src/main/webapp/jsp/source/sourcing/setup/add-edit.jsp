@@ -205,7 +205,7 @@
                             </form:label>
                         </td>
                         <td>
-                            <form:input path="exactLocationPassword"/>
+                            <form:password path="exactLocationPassword"/>
                         </td>
                     </tr>
                 </table>
@@ -305,7 +305,7 @@
                             </form:label>
                         </td>
                         <td>
-                            <form:input path="primaryUrlPassword"/>
+                            <form:password path="primaryUrlPassword"/>
                         </td>
                     </tr>
                 </table>
@@ -378,16 +378,16 @@
                         }
                 ).render('#${ns}end_date_wrapper');
 
-                new A.FormValidator(
+/*                new A.FormValidator(
                         {
-                            boundingBox: '#${ns}add_edit_form'
-                            /*rules: {
+                            boundingBox: '#${ns}add_edit_form',
+                            rules: {
                                 docType: {
                                     required: true
                                 }
-                            }*/
+                            }
                         }
-                );
+                );*/
 
             }
     );

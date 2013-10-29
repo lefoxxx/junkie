@@ -7,14 +7,12 @@
         http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-        
+
     <context:annotation-config />
     <context:component-scan base-package="tld.dmt"  />
    	<mvc:annotation-driven/>
    	
 	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	
-	<bean class="tld.dmt.controller.BaseController" />
 
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -31,6 +29,15 @@
             <props>
                 <prop key="java.lang.Exception">source/sourcing/error</prop>
             </props>
+        </property>
+    </bean>
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <bean class="org.springframework.web.portlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="webBindingInitializer">
+            <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+                <property name="validator" ref="validator" />
+            </bean>
         </property>
     </bean>
 </beans>	

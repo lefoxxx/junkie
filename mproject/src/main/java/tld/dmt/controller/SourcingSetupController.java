@@ -25,6 +25,7 @@ import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -58,7 +59,7 @@ public class SourcingSetupController {
      * Method sets default date format (for @ModelAttribute fields)
      * @param binder
      */
-    @InitBinder
+    @InitBinder(value = "sourcingDoc")
     protected void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
@@ -71,16 +72,22 @@ public class SourcingSetupController {
 
 
     @ActionMapping(params = "operation=createOrEditDoc")
-    public void createDoc(@ModelAttribute("sourcingDoc") SourcingDocument sourcingDoc,
+    public void createDoc(@Valid @ModelAttribute("sourcingDoc") SourcingDocument sourcingDoc,
                           BindingResult bindingResult,
                           ActionRequest request,
                           ActionResponse response,
                           SessionStatus sessionStatus) {
 
-        sourcingSetupService.save(sourcingDoc);
+        if (!bindingResult.hasErrors()) {
+            sourcingSetupService.save(sourcingDoc);
+            response.setRenderParameter("action", "setup");
+            response.setRenderParameter("operation", "readDocumentsFromDb");
+        } else {
+            log.error("Error during validation is occurred." + bindingResult.getFieldErrors().toString());
+            response.setRenderParameter("action", "setup");
+            response.setRenderParameter("operation", "showAddEditDocForm");
+        }
 
-        response.setRenderParameter("action", "setup");
-        response.setRenderParameter("operation", "readDocumentsFromDb");
     }
 
     @RenderMapping (params="operation=readDocumentsFromDb")
@@ -110,6 +117,7 @@ public class SourcingSetupController {
         response.setRenderParameter("action", "setup");
         response.setRenderParameter("operation", "readDocumentsFromDb");
     }
+
 
 
     /* FIXME Need to think how to create MainController, which will handle request common to all controllers.

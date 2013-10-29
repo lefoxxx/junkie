@@ -1,16 +1,13 @@
 package tld.dmt.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  * @author imustafin
@@ -56,69 +53,103 @@ public class SourcingDocument {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+    @NotBlank
 	@Column(name = "dealName")
 	private String dealName;
-	@Column(name = "docType")
+
+    @NotBlank
+    @Column(name = "docType")
 	private String docType;
+
+    @NotNull
 	@Column(name = "sourceType")
 	private SourceType sourceType;
+
+    @NotNull
 	@Column(name = "nlpProcess")
 	private Boolean nlpProcess;
-	@Column(name = "contactInfo")
+
+    @Column(name = "contactInfo")
 	private String contactInfo;
-	@Column(name = "defaultLanguage")
+
+    @Column(name = "defaultLanguage")
 	private DefaultLanguage defaultLanguage;
-	@Column(name = "defaultCurrency")
+
+    @Column(name = "defaultCurrency")
 	private DefaultCurrency defaultCurrency;
-	@Column(name = "status")
+
+    @Column(name = "status")
 	private Status status;
+
+    @NotNull
 	@Column(name = "sourceFrequency")
 	private SourceFrequency sourceFrequency;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+
+    @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "startDate")
 	private Date startDate;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "endDate")
 	private Date endDate;
-	@Column(name = "defaultUom")
+
+    @Column(name = "defaultUom")
 	private Double defaultUom;
 
 	// Exact location subsection
-	@Column(name = "exactLocation")
+
+    @URL
+    @Column(name = "exactLocation")
 	private String exactLocation;
-	@Column(name = "fileName")
+
+    @Column(name = "fileName")
 	private String fileName;
-	@Column(name = "exactLocationUserName")
+
+    @Column(name = "exactLocationUserName")
 	private String exactLocationUserName;
-	@Column(name = "exactLocationPassword")
+
+    @Column(name = "exactLocationPassword")
 	private String exactLocationPassword;
 
 	// Primary url subsection
+    @URL
 	@Column(name = "primaryUrl")
 	private String primaryUrl;
-	@Column(name = "maxDepth")
+
+    @Column(name = "maxDepth")
 	private Integer maxDepth;
-	@Column(name = "docYear")
+
+    @Column(name = "docYear")
 	private Integer docYear;
-	@Column(name = "docFormat")
+
+    @Column(name = "docFormat")
 	private DocumentFormat docFormat;
-	@Column(name = "docNameBeginsWith")
+
+    @Column(name = "docNameBeginsWith")
 	private String docNameBeginsWith;
-	@Column(name = "docNameEndsWith")
+
+    @Column(name = "docNameEndsWith")
 	private String docNameEndsWith;
-	@Column(name = "docNameContains")
+
+    @Column(name = "docNameContains")
 	private String docNameContains;
-	@Column(name = "recrowlAttemptsNum")
+
+    @Column(name = "recrowlAttemptsNum")
 	private Integer recrowlAttemptsNum;
-	@Column(name = "primaryUrlUserName")
+
+    @Column(name = "primaryUrlUserName")
 	private String primaryUrlUserName;
-	@Column(name = "primaryUrlPassword")
+
+    @Column(name = "primaryUrlPassword")
 	private String primaryUrlPassword;
 
 	// Exceptions section
+    @Email
 	@Column(name = "exceptionsEmail")
 	private String exceptionsEmail;
-	@Column(name = "additionalEmailContent")
+
+    @Column(name = "additionalEmailContent")
 	private String additionalEmailContent;
 
 	public Long getId() {
