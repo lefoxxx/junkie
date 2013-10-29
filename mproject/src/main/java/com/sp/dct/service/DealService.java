@@ -1,11 +1,10 @@
 package com.sp.dct.service;
 
+import com.sp.dct.dao.DealDao;
+import com.sp.dct.model.Deal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.sp.dct.dao.DealDao;
-import com.sp.dct.model.Deal;
 
 import java.util.Collection;
 import java.util.List;
@@ -15,6 +14,12 @@ public class DealService {
 
     @Autowired
     private DealDao dao;
+
+
+    @Transactional
+    public Deal getDeal(Integer id) {
+        return dao.get(id);
+    }
 
     @Transactional
     public List<Deal> getDeals() {

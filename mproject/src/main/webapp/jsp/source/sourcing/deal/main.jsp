@@ -7,11 +7,12 @@
 	<layout:navigation item="deal" type="horizontal">
 		<jsp:body>
 			<h1><fmt:message key="deal-tab-name"/></h1>
-
-
-
-
-		</jsp:body>
+            <portlet:renderURL var="editUrl">
+                <portlet:param name="action" value="deal"/>
+                <portlet:param name="operation" value="edit"/>
+            </portlet:renderURL>
+            <a href="${editUrl}"><fmt:message key="new-deal"/></a>
+        </jsp:body>
 	</layout:navigation>
 </jsp:body>
 </layout:navigation>

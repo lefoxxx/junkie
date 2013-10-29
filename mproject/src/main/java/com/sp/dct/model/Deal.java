@@ -1,6 +1,9 @@
 package com.sp.dct.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -12,7 +15,7 @@ import java.util.Date;
                 @NamedQuery(name = Deal.GET_COUNT, query = "SELECT count(*) FROM Deal")
         }
 )
-public class Deal {
+public class Deal implements Serializable {
 
     public static final String ALL = "Deal.ALL";
     public static final String DELETE_BY_IDS = "Deal.DELETE_BY_IDS";
@@ -29,9 +32,11 @@ public class Deal {
     @Column(name = "surv_schedule")
     private SurveillanceSchedule surveillanceSchedule;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "initial_date")
     private Date initialDate;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "scheduled_date")
     private Date scheduledDate;
 
