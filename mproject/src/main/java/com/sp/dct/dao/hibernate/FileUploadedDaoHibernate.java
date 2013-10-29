@@ -1,4 +1,4 @@
-package tld.dmt.dao.hibernate;
+package com.sp.dct.dao.hibernate;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import tld.dmt.dao.FileUploadedDao;
-import tld.dmt.model.FileUploaded;
+import com.sp.dct.dao.FileUploadedDao;
+import com.sp.dct.model.FileUploaded;
 
 /**
  * Author: ejolos

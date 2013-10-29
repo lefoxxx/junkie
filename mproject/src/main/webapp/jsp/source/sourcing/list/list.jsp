@@ -12,7 +12,7 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 
-<%@page import="tld.dmt.model.SourcingDocument"%>
+<%@page import="com.sp.dct.model.SourcingDocument"%>
 
 <%@page import="com.liferay.portal.kernel.dao.search.ResultRow"%>
 
@@ -30,6 +30,8 @@
 <%
 
     PortletURL portletURL = renderResponse.createRenderURL();
+	portletURL.setParameter("action", "list");
+	portletURL.setParameter("operation", "showList");
     SearchContainer searchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, 20, portletURL, null, null);
     
     

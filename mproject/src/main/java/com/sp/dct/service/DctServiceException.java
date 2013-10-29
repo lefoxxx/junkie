@@ -1,4 +1,4 @@
-package tld.dmt.service;
+package com.sp.dct.service;
 
 /**
  * @author imustafin

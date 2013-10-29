@@ -2,6 +2,8 @@ package tld.dmt.controller;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.service.SourcingSetupService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,8 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.RenderMapping;
-
-import tld.dmt.service.SourcingSetupService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -34,9 +35,12 @@ public class SourcingListController {
     }
     
     @RenderMapping(params = "operation=showList")
-    public String showAddEditForm(Model model) {
-    	model.addAttribute("listDocs", sourcingSetupService.getAllDocuments());
-    	model.addAttribute("count", sourcingSetupService.getAllDocuments().size());
+    public String showAddEditForm(@RequestParam(value = "cur", required = false) Integer pageStart,
+    		@RequestParam(value = "delta", required = false) Integer pageSize,
+    		Model model) {
+    	   	
+    	model.addAttribute("listDocs", sourcingSetupService.getDocuments(pageStart == null ? 0 : (pageStart.intValue() - 1), pageSize == null ? 20 : pageSize.intValue(), null));
+    	model.addAttribute("count", sourcingSetupService.getDocumentsCount());
         return "source/sourcing/list/list";
     }
 

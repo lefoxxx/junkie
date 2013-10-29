@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/mvc     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="tld.dmt"  />
+    <context:component-scan base-package="tld.dmt,com.sp.dct" />
    	<mvc:annotation-driven/>
    	
 	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping" />

@@ -1,10 +1,11 @@
-package tld.dmt.service;
-
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
+package com.sp.dct.service;
 
 import java.util.Collection;
 import java.util.List;
+
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
 
 /**
  * @author imustafin
@@ -17,5 +18,9 @@ public interface SourcingSetupService {
     public void delete(Collection<Long> ids);
 
 	public List<SourcingDocument> findByCriteria(SourcingSetupSearch search);
+	
+    int getDocumentsCount();
+    List<SourcingDocument> getDocuments(int pageStart, int pageSize, SortingCriteria sorting);
+
 
 }

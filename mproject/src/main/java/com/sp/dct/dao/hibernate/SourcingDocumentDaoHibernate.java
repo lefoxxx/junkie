@@ -1,4 +1,4 @@
-package tld.dmt.dao.hibernate;
+package com.sp.dct.dao.hibernate;
 
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -9,13 +9,16 @@ import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import tld.dmt.dao.SourcingDocumentDao;
-import tld.dmt.model.SourcingDocument;
-import tld.dmt.model.SourcingSetupSearch;
+import com.sp.dct.dao.SourcingDocumentDao;
+import com.sp.dct.model.SortingCriteria;
+import com.sp.dct.model.SourcingDocument;
+import com.sp.dct.model.SourcingSetupSearch;
+import com.sp.dct.model.SortingCriteria.OrderType;
 
 @Repository("sourcingDocumentDao")
 public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
@@ -74,5 +77,30 @@ public class SourcingDocumentDaoHibernate implements SourcingDocumentDao {
 		}
 		return crit.list();
 
+	}
+
+	@Override
+	public int getDocumentsCount() {
+	    Query query = sessionFactory.getCurrentSession().getNamedQuery(SourcingDocument.GET_COUNT);
+	    Object data = query.list().get(0);
+	    Number count = (Number)(data);
+        return count.intValue();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SourcingDocument> getDocuments(int pageStart, int pageSize,	SortingCriteria sorting) {
+	    org.hibernate.Criteria crit = sessionFactory.getCurrentSession().createCriteria(SourcingDocument.class);
+	    
+	    if (sorting != null) {
+	        for(SortingCriteria.SortField sort : sorting.getFields()) {
+	            Order order = OrderType.ASCENDING.equals(sort.getOrder()) ? Order.asc(sort.getFieldName()) : Order.desc(sort.getFieldName());
+	            crit.addOrder(order);
+	        }
+	    }
+	    
+	    crit.setFirstResult(pageStart * pageSize);
+	    crit.setMaxResults(pageSize);
+	    return crit.list();
 	}
 }
